@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+// eslint-disable-next-line prettier/prettier
 /* ДЗ 2 - работа с массивами и объектами */
 /*
  Задание 1:
@@ -7,19 +9,12 @@
 
  Пример:
  */
-
 function forEach(array, fn) {
   for (let i = 0; i < array.length; i++) {
     fn(array[i], i, array);
   }
 }
 
-forEach([11, 0, 13], (num) => {
-  console.log(num);
-});
-// array.forEach((num) => {
-//   console.log(num);
-// });
 /*
  Задание 2:
 
@@ -36,10 +31,7 @@ function map(array, fn) {
   }
   return result;
 }
-const result = map([1, 2, 3], (el) => el ** 2);
-// const array = [1,2,3];
-// console.log(array.map((num) => num ** 2));
-console.log(result);
+
 /*
  Задание 3:
 
@@ -63,10 +55,7 @@ function reduce(array, fn, initial) {
   }
   return all;
 }
-const array = [1, 2, 3];
-console.log(reduce(array, (all, current) => all + current, 4));
-// console.log(array.reduce(array, (all, current) => all + current), 10));
-console.log(array);
+
 /*
  Задание 4:
 
@@ -82,9 +71,7 @@ function upperProps(obj) {
   }
   return newArray;
 }
-console.log(
-  upperProps({ name: 'Сергей', lastName: 'Петров', old: 40, major: 'ingineer' })
-);
+
 /*
  Задание 5 *:
 
@@ -108,8 +95,5 @@ function createProxy(obj) {
   });
   return proxy;
 }
-const obj = createProxy({});
-obj.foo = 2;
-console.log(obj);
 
 export { forEach, map, reduce, upperProps, createProxy };
