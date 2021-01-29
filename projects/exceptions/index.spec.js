@@ -5,7 +5,7 @@ import {
 } from '../../scripts/helper';
 import { calculator, isAllTrue, isSomeTrue, returnBadArguments } from './index';
 
-describe('ДЗ 3 - работа с исключениями и отладчиком', () => {
+describe('ДЗ 2 - работа с исключениями и отладчиком', () => {
   describe('isAllTrue', () => {
     it('должна вызывать fn для всех элементов массива', () => {
       const array = random('array', 1);
@@ -20,7 +20,7 @@ describe('ДЗ 3 - работа с исключениями и отладчик�
       const array = randomNumberArray();
       const result = isAllTrue(array, Number.isFinite);
 
-      expect(result).toBe(true);
+      expect(result);
     });
 
     it('должна вернуть false, если fn вернула false хотя бы для одного элемента массива', () => {
@@ -29,7 +29,7 @@ describe('ДЗ 3 - работа с исключениями и отладчик�
       array.push(random('string'));
       const result = isAllTrue(array, Number.isFinite);
 
-      expect(result).toBe(false);
+      expect(!result);
     });
 
     it('должна выбросить исключение, если передан пустой массив', () => {
@@ -53,14 +53,14 @@ describe('ДЗ 3 - работа с исключениями и отладчик�
       const array = randomStringArray().concat(random('number'));
       const result = isSomeTrue(array, Number.isFinite);
 
-      expect(result).toBe(true);
+      expect(result);
     });
 
     it('должна вернуть false, если fn не вернула true хотя бы для одного элемента массива', () => {
       const array = randomStringArray();
       const result = isSomeTrue(array, Number.isFinite);
 
-      expect(result).toBe(false);
+      expect(!result);
     });
 
     it('должна выбросить исключение, если передан пустой массив', () => {
