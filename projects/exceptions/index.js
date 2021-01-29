@@ -35,11 +35,7 @@ function isAllTrue(array, fn) {
       trueNum++;
     }
   }
-  if (trueNum === array.length) {
-    return true;
-  } else {
-    return false;
-  }
+  return trueNum === array.length;
 }
 /*
 Задание 2:
@@ -69,11 +65,7 @@ function isSomeTrue(array, fn) {
         trueNum++;
       }
     }
-    if (trueNum >= 1) {
-      return true;
-    } else {
-      return false;
-    }
+    return trueNum >= 1;
   } 
 }
 
@@ -122,16 +114,12 @@ function returnBadArguments(fn, ...args) {
    */
   function calculator(number = 0) {
     if (isFinite(number)) {
-      class object {
-        constructor() {
-          this.sum = sum;
-          this.dif = dif;
-          this.div = div;
-          this.mul = mul;
-        }
-      }
-      const finalObject = new object();
-      return finalObject;
+      return {
+        sum,
+        dif,
+        div,
+        mul
+      };
     } else {
       throw new Error('number is not a number')
     }
