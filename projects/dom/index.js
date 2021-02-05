@@ -160,11 +160,11 @@ function collectDOMStat(root) {
   const statResult = {};
   statResult.tags = {};
   statResult.classes = {};
-  let texts = 0;
+  statResult.texts = 0;
   function recursive(elem) {
     for (const node of elem.childNodes) {
       if (node.nodeType === 3) {
-        statResult.texts = texts++;
+        statResult.texts++;
       } else if (node.nodeType === 1) {
         // eslint-disable-next-line no-prototype-builtins
         if (statResult.tags.hasOwnProperty(node.nodeName)) {
@@ -222,15 +222,19 @@ function collectDOMStat(root) {
  */
 function observeChildNodes(where, fn) {
   const observer = new MutationObserver((mutationRecords) => {
-    const moveChild = {};
-    if (mutationRecords.addedNodes === '') {
-      moveChild.type = `insert`;
-      moveChild.nodes = mutationRecords.addedNodes;
-    } else {
-      moveChild.type = `remove`;
-      moveChild.nodes = mutationRecords.removedNodes;
-    }
-    fn(moveChild);
+    mutationRecords.forEach((mutation) => {
+      if (mutation.type === 'childList') {
+        const argument = {};
+        if (mutation.addedNodes.length) {
+          argument.type = `insert`;
+          argument.nodes = [...mutation.addedNodes];
+        } else {
+          argument.type = `remove`;
+          argument.nodes = [...mutation.removedNodes];
+        }
+        fn(argument);
+      }
+    });
   });
   observer.observe(where, {
     childList: true,
