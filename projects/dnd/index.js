@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* Задание со звездочкой */
 
 /*
@@ -42,10 +43,8 @@ export function createDiv() {
 }
 
 const addDivButton = homeworkContainer.querySelector('#addDiv');
-console.log(addDivButton);
 
 addDivButton.addEventListener('click', function () {
-  console.log('click');
   const div = createDiv();
   homeworkContainer.appendChild(div);
 });
@@ -55,18 +54,15 @@ function move(div, pageX, pageY) {
   div.style.top = pageY - div.offsetHeight / 2 + 'px';
 }
 function onMouseMove(event) {
-  console.log('mousemove');
   move(event.target, event.pageX, event.pageY);
 }
 document.addEventListener('mousedown', function (event) {
   if (event.target.classList.contains('draggable-div')) {
-    console.log('mousedown');
     move(event.target, event.pageX, event.pageY);
     document.addEventListener('mousemove', onMouseMove);
   }
 });
 document.addEventListener('mouseup', function () {
-  console.log('mouseup');
   document.removeEventListener('mousemove', onMouseMove);
   event.target.onmouseup = null;
 });
